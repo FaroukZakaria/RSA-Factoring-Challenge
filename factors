@@ -1,24 +1,23 @@
 #!/usr/bin/python3
-import sys
-if len(sys.argv) != 2:
-    print("Usage: ./factors <file>")
-    exit(0)
+import sys, math
 arg = sys.argv[1]
 def do_prime(numbers):
     for number in numbers:
         number = int(number)
         if number % 2 == 0:
             print(f"{number}={number // 2}*2")
+        elif number % 3 == 0:
+            print(f"{number}={number // 3}*3")
+        elif number % 5 == 0:
+            print(f"{number}={number // 5}*5")
+        elif number % 7 == 0:
+            print(f"{number}={number // 7}*7")
         else:
-            for n in range (3, int(number ** 0.5), 2):
+            for n in range(3, int(math.sqrt(number)) + 1, 2):
                 if number % n == 0:
                     print(f"{number}={number // n}*{n}")
                     break
-try:
-    fille = open(arg, "r")
-    content = fille.readlines()
-    do_prime(content)
-    fille.close()
-except:
-    print("File not found")
-    exit(0)
+fille = open(arg, "r")
+content = fille.readlines()
+do_prime(content)
+fille.close()
