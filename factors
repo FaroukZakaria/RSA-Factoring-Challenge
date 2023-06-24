@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import sys
+import sys, math
 arg = sys.argv[1]
 def do_prime(numbers):
     for number in numbers:
@@ -13,10 +13,8 @@ def do_prime(numbers):
         elif number % 7 == 0:
             print(f"{number}={number // 7}*7")
         else:
-            for n in range(2, number + 1):
-                if number % n != 0:
-                    continue
-                else:
+            for n in range(2, int(math.sqrt(number)) + 1):
+                if number % n == 0:
                     print(f"{number}={number // n}*{n}")
                     break
 fille = open(arg, "r")
