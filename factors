@@ -4,9 +4,6 @@ import time
 
 
 def do_prime(numbers):
-    if len(sys.argv) != 2:
-        print("Usage: factors <file>")
-        exit()
     for number in numbers:
         number = int(number)
         if number % 2 == 0:
@@ -24,14 +21,24 @@ def do_prime(numbers):
                     break
 
 
+def sortt(cont):
+    with open(cont, "r") as fie:
+        content = fie.readlines()
+    sorted_lines = sorted(map(int, (line.strip() for line in content)))
+    with open(cont, "w") as fie:
+        fie.writelines(str(line) + "\n" for line in sorted_lines)
+    fie.close()
+    return (sorted_lines)
+
+
 if __name__ == "__main__":
     try:
+        if len(sys.argv) != 2:
+            print("Usage: factors <file>")
+            exit()
         arg = sys.argv[1]
-        fille = open(arg, "r")
-        content = fille.readlines()
-        start_time = time.time()
-        do_prime(content)
-        fille.close()
+        fille = sortt(arg)
+        do_prime(fille)
     except FileNotFoundError:
         print("File not found")
         exit()
