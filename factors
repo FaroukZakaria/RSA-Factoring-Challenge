@@ -18,6 +18,7 @@ def do_prime(numbers):
                     continue
                 else:
                     print(f"{number}={number // n}*{n}")
+                    break
 fille = open(arg, "r")
 content = fille.readlines()
 do_prime(content)
