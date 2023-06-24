@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import sys, math
-arg = sys.argv[1]
 def do_prime(numbers):
+    if len(sys.argv) != 2:
+        print("Usage: factors <file>")
+        exit()
     for number in numbers:
         number = int(number)
         if number % 2 == 0:
@@ -17,7 +19,13 @@ def do_prime(numbers):
                 if number % n == 0:
                     print(f"{number}={number // n}*{n}")
                     break
-fille = open(arg, "r")
-content = fille.readlines()
-do_prime(content)
-fille.close()
+if __name__ == "__main__":
+    try:
+        arg = sys.argv[1]
+        fille = open(arg, "r")
+        content = fille.readlines()
+        do_prime(content)
+        fille.close()
+    except FileNotFoundError:
+        print("File not found")
+        exit()
