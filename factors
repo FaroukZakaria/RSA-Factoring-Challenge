@@ -2,7 +2,7 @@
 import sys
 if len(sys.argv) != 2:
     print("Usage: ./factors <file>")
-    exit(1)
+    exit(0)
 arg = sys.argv[1]
 def do_prime(numbers):
     for number in numbers:
@@ -21,4 +21,4 @@ try:
     fille.close()
 except:
     print("File not found")
-    exit(1)
+    exit(0)
