@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <string.h>
 /**
  * main - Entry point
  * @argc: argument counter
@@ -26,7 +27,8 @@ int main(int argc, char **argv)
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		if (strlen(num) > 18) //do python command here!!
+		if (strlen(line) > 18)
+			printf("PASS\n");
 		num = atoll(line);
 		if (num % 2 == 0)
 			printf("%lld=%lld*2\n", num, num / 2);
