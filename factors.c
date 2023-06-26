@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 	{
 		/*if (strlen(line) > 18)
 			printf("PASS\n");*/
-		num = atoll(line);
+		num = strtoull(line, NULL, 10);
 		if (num % 2 == 0)
 			printf("%llu=%llu*2\n", num, num / 2);
 		else
