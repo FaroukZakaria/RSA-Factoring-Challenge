@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 {
 	FILE *file;
 	char line[256];
-	long long int num, i;
+	unsigned long long int num, i;
 
 	if (argc != 2)
 	{
@@ -27,18 +27,18 @@ int main(int argc, char **argv)
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		if (strlen(line) > 18)
-			printf("PASS\n");
+		/*if (strlen(line) > 18)
+			printf("PASS\n");*/
 		num = atoll(line);
 		if (num % 2 == 0)
-			printf("%lld=%lld*2\n", num, num / 2);
+			printf("%llu=%llu*2\n", num, num / 2);
 		else
 		{
-			for (i = 3; i < (int)sqrt(num) + 1; i += 2)
+			for (i = 3; i < (unsigned long long int)sqrt(num) + 1; i += 2)
 			{
 				if (num % i == 0)
 				{
-					printf("%lld=%lld*%lld\n", num, num / i, i);
+					printf("%llu=%llu*%llu\n", num, num / i, i);
 					break;
 				}
 			}
