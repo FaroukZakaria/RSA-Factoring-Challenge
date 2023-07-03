@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 /**
  * main - Entry point
  * @argc: argument counter
@@ -26,14 +27,12 @@ int main(int argc, char **argv)
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		/*if (strlen(line) > 18)
-			printf("PASS\n");*/
 		num = strtoull(line, NULL, 10);
 		if (num % 2 == 0)
 			printf("%llu=%llu*2\n", num, num / 2);
 		else
 		{
-			for (i = 3; i < num ** 0.5 + 1; i += 2)
+			for (i = 3; i < (unsigned long long int)(sqrt(num) + 1); i += 2)
 			{
 				if (num % i == 0)
 				{
