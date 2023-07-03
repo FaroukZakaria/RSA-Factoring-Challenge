@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdlib.h>
 #include <string.h>
 /**
@@ -34,7 +33,7 @@ int main(int argc, char **argv)
 			printf("%llu=%llu*2\n", num, num / 2);
 		else
 		{
-			for (i = 3; i < (unsigned long long int)sqrt(num) + 1; i += 2)
+			for (i = 3; i < num ** 0.5 + 1; i += 2)
 			{
 				if (num % i == 0)
 				{
