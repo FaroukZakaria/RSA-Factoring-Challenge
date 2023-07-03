@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+int ch_prime(unsigned long long int n);
 /**
  * main - Entry point
  * @argc: argument counter
@@ -27,13 +28,13 @@ int main(int argc, char **argv)
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		num = strtoull(line, NULL, 10);
-		if (num % 2 == 0)
+		if ((num % 2 == 0) && ch_prime(num / 2) == 0)
 			printf("%llu=%llu*2\n", num, num / 2);
 		else
 		{
-			for (i = 3; i * i < num; i += 2)
+			for (i = 3; i * i <= num; i += 2)
 			{
-				if (num % i == 0)
+				if ((num % i == 0) && ch_prime(num / i) == 0)
 				{
 					printf("%llu=%llu*%llu\n", num, num / i, i);
 					break;
@@ -42,5 +43,21 @@ int main(int argc, char **argv)
 		}
 	}
 	fclose(file);
+	return (0);
+}
+/**
+ * ch_prime - checks prime
+ * @n: number
+ * Return: ...
+ */
+int ch_prime(unsigned long long int n)
+{
+	unsigned long long int i;
+
+	if (n < 2)
+		return (1);
+	for (i = 2; i * i <= n; i++)
+		if (n % i == 0)
+			return (1);
 	return (0);
 }
